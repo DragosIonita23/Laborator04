@@ -17,7 +17,6 @@
             <Button
                 android:id="@+id/showHideFields"
                 android:text="@string/show_additional_fields"
-                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -28,7 +27,6 @@
                 android:id="@+id/contactNameEditText"
                 android:inputType="text"
                 android:hint="@string/name"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
             <EditText
@@ -36,21 +34,18 @@
                 android:inputType="none"
                 android:hint="@string/phone"
                 android:enabled="false"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
             <EditText
                 android:id="@+id/contactEmailEditText"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
             <EditText
                 android:id="@+id/contactAddressEditText"
                 android:inputType="text"
                 android:hint="@string/address"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
             <LinearLayout
@@ -75,6 +70,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/hiddenContainerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -83,28 +79,24 @@
                     android:id="@+id/contactJobTitleEditText"
                     android:inputType="text"
                     android:hint="@string/job_title"
-                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
                 <EditText
                     android:id="@+id/contactCompanyEditText"
                     android:inputType="text"
                     android:hint="@string/company"
-                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
                 <EditText
                     android:id="@+id/contactWebsiteEditText"
                     android:inputType="text"
                     android:hint="@string/website"
-                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
                 <EditText
                     android:id="@+id/contactIMEditText"
                     android:inputType="text"
                     android:hint="@string/im"
-                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
             </LinearLayout>

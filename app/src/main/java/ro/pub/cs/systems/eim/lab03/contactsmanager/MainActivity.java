@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +16,7 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.showHideFields) {
-                if (((Button)view).getVisibility() == View.VISIBLE) {
-                    ((Button)view).setVisibility(View.GONE);
+                if ((findViewById(R.id.hiddenContainerLayout)).getVisibility() == View.VISIBLE) {
+                    (findViewById(R.id.hiddenContainerLayout)).setVisibility(View.GONE);
                     ((Button)view).setText(R.string.show_additional_fields_main);
-                } else if (((Button)view).getVisibility() == View.GONE) {
-                    ((Button)view).setVisibility(View.VISIBLE);
+                } else if ((findViewById(R.id.hiddenContainerLayout)).getVisibility() == View.GONE) {
+                    (findViewById(R.id.hiddenContainerLayout)).setVisibility(View.VISIBLE);
                     ((Button)view).setText(R.string.hide_additional_fields_main);
                 }
             } else if (view.getId() == R.id.saveButton) {
@@ -91,10 +93,19 @@ public class MainActivity extends AppCompatActivity {
                     contactData.add(imRow);
                 }
                 intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
-                startActivity(intent);
+                startActivityForResult(intent, 1234);
             } else if (view.getId() == R.id.cancelButton) {
-                finish();
+                setResult(Activity.RESULT_CANCELED, new Intent());
             }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1234) {
+            setResult(resultCode, new Intent());
+            finish();
         }
     }
 
@@ -114,5 +125,15 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(btnListener);
         cancelButton.setOnClickListener(btnListener);
         showHideButton.setOnClickListener(btnListener);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String phoneNumber = intent.getStringExtra("ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY");
+            if (phoneNumber != null) {
+                phoneNumberText.setText(phoneNumber);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

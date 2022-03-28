@@ -13,4 +13,5 @@
     <string name="show_additional_fields_main">SHOW ADDITIONAL FIELDS</string>
     <string name="hide_additional_fields_main">HIDE ADDITIONAL FIELDS</string>
     <string name="email">Email</string>
+    <string name="phone_error">Provide a valid phone number!</string>
 </resources>
